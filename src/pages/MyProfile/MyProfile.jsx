@@ -91,6 +91,9 @@ const MyProfile = (props) => {
                 Mark Complete
               </button>
               }
+              <p>
+                Goal Status: {profile.goals.isComplete ? 'Complete' : 'Incomplete'}
+              </p>
               <button onClick={() => handleDeleteGoal(goal._id)}>
                 Delete Goal
               </button>
