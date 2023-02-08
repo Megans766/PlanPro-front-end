@@ -3,8 +3,6 @@ import { useState, useEffect } from 'react'
 import * as goalService from '../../services/goalService'
 import * as profileService from '../../services/profileService'
 import styles from './MyProfile.module.css'
-// import GoalDetail from '../GoalDetail/GoalDetail'
-
 
 const MyProfile = (props) => {
   const [profile, setProfile] = useState(null)
@@ -41,8 +39,19 @@ const MyProfile = (props) => {
     })
   }
 
-  const handleUpdateTask = async () => {
-    
+  const handleUpdateGoal = async (goalId) => {
+    const formData = {
+      isComplete: true
+    }
+    const updatedGoal = await goalService.updateGoal(goalId, formData)
+    console.log("UPDATED GOAL", updatedGoal);
+    setProfile({
+      ...profile, goals: profile.goals.map((g) => {
+        return g._id === updatedGoal._id
+          ? updatedGoal
+          : g
+      })
+    })
   }
 
   if (!profile) return <p>Please Log In or Sign Up!</p>
@@ -74,7 +83,14 @@ const MyProfile = (props) => {
           </h2 >
           {profile.goals.map(goal => (
             <li key={goal._id}>
-              <Link to={`/goalLists/${goal._id}`}>{goal.title}</Link>
+              <Link to={`/goalLists/${goal._id}`}>
+                {goal.title}
+              </Link>
+              {!profile.goals.isComplete &&
+              <button onClick={() => handleUpdateGoal(goal._id)}>
+                Mark Complete
+              </button>
+              }
               <button onClick={() => handleDeleteGoal(goal._id)}>
                 Delete Goal
               </button>

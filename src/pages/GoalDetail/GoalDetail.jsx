@@ -41,7 +41,7 @@ const GoalDetail = () => {
   }
 
   const handleAddStep = async (taskId, stepData) => {
-    const updatedTask =await taskService.createStep(taskId, stepData)
+    const updatedTask =await goalService.createStep(taskId, stepData)
     setGoal({
       ...goal, tasks: goal.tasks.map((t) => {
         return t._id === updatedTask._id
