@@ -41,6 +41,10 @@ const MyProfile = (props) => {
     })
   }
 
+  const handleUpdateTask = async () => {
+    
+  }
+
   if (!profile) return <p>Please Log In or Sign Up!</p>
 
   return (

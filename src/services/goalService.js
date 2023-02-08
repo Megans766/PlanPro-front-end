@@ -70,10 +70,27 @@ const deleteGoal = async (id) => {
   }
 }
 
+const updateGoal = async (goalId, formData) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${goalId}`, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    })
+    return res.json()
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 export { 
   index,
   show,
   createStep,
   createGoal,
-  deleteGoal
+  deleteGoal,
+  updateGoal
 }

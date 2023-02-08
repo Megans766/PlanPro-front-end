@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styles from './NewStep.module.css'
-// import * as taskService from "../../services/taskService";
 
 const NewStep = (props) => {
   const [step, setStep] = useState({
