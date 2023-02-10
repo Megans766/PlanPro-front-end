@@ -19,10 +19,9 @@ const NewStep = (props) => {
   return (
     <main className={styles.container}>
       <div>
-
         <section>
           <form onSubmit={handleSubmit}>
-          <h4>Add a new Step</h4>
+            <h4>Add a new Step</h4>
             <label>Step:</label>
             <input
               type="text"

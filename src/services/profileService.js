@@ -15,7 +15,6 @@ async function getProfile() {
     headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
   })
   const data = await res.json()
-  console.log(data);
   return data
 }
 

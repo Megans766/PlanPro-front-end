@@ -15,9 +15,9 @@ const TaskList = (props) => {
         <header>
           <h2>Task List
             <div>
-          <button onClick={handleToggle}>
-            Show
-          </button>
+              <button onClick={handleToggle}>
+                Show
+              </button>
             </div>
           </h2>
         </header>
@@ -32,7 +32,7 @@ const TaskList = (props) => {
             />
           ))
         }
-        </div>
+      </div>
     </main>
   )
 }

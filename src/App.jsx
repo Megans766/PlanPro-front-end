@@ -40,6 +40,7 @@ const App = () => {
     const newQuote = await quoteService.createQuote(quoteData);
     setQuotes([newQuote, ...quotes]);
   };
+  
   useEffect(() => {
     const fetchAllQuotes = async () => {
       const data = await quoteService.index();

@@ -8,7 +8,6 @@ import styles from './GoalDetail.module.css'
 
 const GoalDetail = () => {
   const { goalId } = useParams()
-  console.log("THIS IS A GOALID", goalId);
   const [goal, setGoal] = useState(null)
 
   const handleAddTask = async (formData) => {
@@ -31,7 +30,6 @@ const GoalDetail = () => {
       isComplete: true
     }
     const updatedTask = await taskService.updateTask(taskId, formData)
-    console.log("UPDATED TASK", updatedTask);
     setGoal({
       ...goal, tasks: goal.tasks.map((t) => {
         return t._id === updatedTask._id
@@ -55,7 +53,6 @@ const GoalDetail = () => {
   useEffect(() => {
     const fetchGoal = async () => {
       const goalData = await goalService.show(goalId)
-      console.log('GOAL DATA', goalData);
       setGoal(goalData)
     }
     fetchGoal()
@@ -67,14 +64,14 @@ const GoalDetail = () => {
     <main className={styles.container}>
       <h1>{goal.title}</h1>
       <section>
-      <NewTask handleAddTask={handleAddTask} />
-      <TaskList 
-        tasks={goal.tasks} 
-        handleDeleteTask={handleDeleteTask}
-        handleUpdateTask={handleUpdateTask}
-        handleAddStep={handleAddStep}
-        />
-        </section>
+        <NewTask handleAddTask={handleAddTask} />
+        <TaskList 
+          tasks={goal.tasks} 
+          handleDeleteTask={handleDeleteTask}
+          handleUpdateTask={handleUpdateTask}
+          handleAddStep={handleAddStep}
+          />
+      </section>
     </main>
   )
 }

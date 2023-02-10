@@ -6,11 +6,10 @@
   box-shadow: #bfc1c0 3px 3px 6px 0px inset, #bfc1c0 -3px -3px 6px 1px inset;
 }
 
-
 .container button {
   margin-top: 20px;
 }
 
 .container h2 {
- justify-content: center;
+  justify-content: center;
 }

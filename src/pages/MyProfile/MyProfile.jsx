@@ -12,7 +12,6 @@ const MyProfile = (props) => {
   useEffect(() => {
     const fetchProfile = async () => {
       const profileData = await profileService.getProfile()
-      console.log('profile data', profileData);
       setProfile(profileData)
     }
     fetchProfile()
@@ -43,16 +42,14 @@ const MyProfile = (props) => {
 
   return (
     <main className={styles.container}>
-        <img src={profile.photo} alt="" />
-        <h1>Welcome, {profile.name}</h1>
-        <section>
+      <img src={profile.photo} alt="" />
+      <h1>Welcome, {profile.name}</h1>
+      <section>
         <form
           onSubmit={handleAddGoalList}
           className={styles.form}
         >
-          <h3>
-            Create A Goal List
-          </h3>
+          <h3>Create A Goal List</h3>
           <input
             name="title"
             type="text"
@@ -60,12 +57,9 @@ const MyProfile = (props) => {
             onChange={handleChange}
           />
           <button> submit </button>
-
         </form>
         <ul>
-          <h2>
-            My Goal Lists
-          </h2 >
+          <h2>My Goal Lists</h2 >
           {profile.goals.map(goal => (
             <li key={goal._id}>
               <Link to={`/goalLists/${goal._id}`}>{goal.title}</Link>
